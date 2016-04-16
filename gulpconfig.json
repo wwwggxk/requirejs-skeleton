@@ -1,0 +1,70 @@
+{
+    "header": "/* build description */",
+    "server": {
+        "root": "./",
+        "port": 9999
+    },
+    "reg":{
+    },
+    "ga": {
+        "enabled": false,
+        "key": "<!--ga-->",
+        "placeholder": "{trackingId}",
+        "trackingId": "UA-65648625-1",
+        "script": "<script>(function(i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create','{trackingId}', 'auto'); ga('send', 'pageview')</script>"
+        },
+    "qiniu": {
+        "bucket": "wungqiang",
+        "domain": "7xjjev.com1.z0.glb.clouddn.com",
+        "accessKey": "WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ",
+        "secretKey": "kk-BHbZQHJop9bsswFKS0LDcD2OE_qr88b058Nsa"
+    },
+    "key": {
+        "sshKeyPath": "/Users/Qiang/.ssh/id_rsa",
+        "sshUsername": "work",
+        "sshPassword": "1234"
+    },
+    "css": {
+        "autoprefixBrowsers": [
+            "> 1%",
+            "Firefox >= 10",
+            "ie >= 9",
+            "iOS >= 4",
+            "Chrome >= 10"
+        ]
+    },
+    "ext": {
+        "meta": "{txt,ico}",
+        "resource": "{css,js}",
+        "html": "{html,dot}",
+        "style": "{less,sass,scss}",
+        "image": "{png,jpeg,jpg,gif,svg}"
+    },
+    "paths": {
+        "base": ".",
+        "configFile": "./gulpconfig.json",
+        "manifestFile": "./manifest.json",
+        "manifestcdnFile": "./manifestcdn.json",
+        "srcCoreLibs": [
+            "./libs/jquery.min.js",
+            "./libs/modernizr.custom.min.js"
+        ],
+        "srcOtherLibs": [
+            "./libs/bootstrap",
+            "./libs/hover-min.css"
+        ],
+        "srcIndex": "./index.html",
+        "srcTemplates": "./templates",
+        "srcScripts": "./js",
+        "srcImages": "./img",
+        "srcStyles": "./css/",
+
+        "dist": "dist",
+        "distCoreLibsName": "core.js",
+        "distLibs": "dist/libs",
+        "distTemplates": "dist/templates",
+        "distScripts": "dist/js",
+        "distImages": "dist/img",
+        "distStyles": "dist/css"
+    }
+}
