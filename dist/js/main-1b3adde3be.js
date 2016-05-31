@@ -1,1 +1,0 @@
-/* build description */define("components/utils",[],function(){console.log("utils.js")}),define("components/form",[],function(){console.log("form.js")}),requirejs(["./components/utils","./components/form"],function(){console.log("hello world"),alert("a")}),define("main",["components/utils","components/form"],function(){});
