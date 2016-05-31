@@ -9,6 +9,15 @@ var through2 = require('through2');
  * @return {undefined}
  */
 module.exports.allFile = function (path, ext) {
+    var fileReg = /\/.+?\..+?$/;
+    if (Array.isArray(path)) {
+        path.forEach(function (item, index) {
+            if (!fileReg.test(item)) {
+                path[index] =  path[index] + '/**/*' + (ext ? ('.' + ext) : '');
+            }
+        });
+        return path;
+    }
     return path + '/**/*' + (ext ? ('.' + ext) : '');
 };
 
@@ -20,6 +29,15 @@ module.exports.allFile = function (path, ext) {
  * @return {undefined}
  */
 module.exports.childFile = function (path, ext) {
+    var fileReg = /\/.+?\..+?$/;
+    if (Array.isArray(path)) {
+        path.forEach(function (item, index) {
+            if (!fileReg.test(item)) {
+                path[index] =  path[index] + '/*' + (ext ? ('.' + ext) : '');
+            }
+        });
+        return path;
+    }
     return path + '/*' + (ext ? ('.' + ext) : '');
 };
 

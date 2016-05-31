@@ -1,7 +1,7 @@
 {
     "header": "/* http://wq.fyi */",
     "server": {
-        "root": "./",
+        "root": "./app",
         "port": 9999
     },
     "release": {
@@ -53,11 +53,11 @@
         "image": "{png,jpeg,jpg,gif,svg}"
     },
     "paths": {
-        "base": ".",
-        "manifestFile": "./gulp/config/manifest.json",
-        "manifestCdnFile": "./gulp/config/manifest-cdn.json",
-        "manifestAssetsFile": "./gulp/config/manifest-assets.json",
-        "manifestAssetsCdnFile": "./gulp/config/manifest-assets-cdn.json",
+        "base": "./app",
+        "manifestFile": "./gulp/.tmp/manifest.json",
+        "manifestCdnFile": "./gulp/.tmp/manifest-cdn.json",
+        "manifestAssetsFile": "./gulp/.tmp/manifest-assets.json",
+        "manifestAssetsCdnFile": "./gulp/.tmp/manifest-assets-cdn.json",
         "requireConfigFile": "./gulp/config/requireconfig.js",
 
         "coreCssName": "core.css",
@@ -73,14 +73,15 @@
         ],
         "srcOtherLibs": [
         ],
-        "srcIndex": "./index.html",
-        "srcTemplates": "../templates",
-        "srcScripts": "./js",
-        "srcImages": "./img",
-        "srcStyles": "./css/",
+        "srcTemplates": [
+            "app/index.html",
+            "app/templates"
+        ],
+        "srcScripts": "app/js",
+        "srcImages": "app/img",
+        "srcStyles": "app/css",
 
-        "dist": "dist",
-        "distIndex": "dist/index.html",
+        "dist": "./dist",
         "distLibs": "dist/libs",
         "distScripts": "dist/js",
         "distImages": "dist/img",

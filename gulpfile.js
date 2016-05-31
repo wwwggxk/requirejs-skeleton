@@ -5,9 +5,9 @@ var gulp = require('gulp'),
     hashTask = require('./gulp/tasks/hash'),
     cleanTask = require('./gulp/tasks/clean'),
     cdnTask = require('./gulp/tasks/cdn'),
-    htmlTask = require('./gulp/tasks/html');
-    replaceTask = require('./gulp/tasks/replace');
-    releaseTask = require('./gulp/tasks/release');
+    htmlTask = require('./gulp/tasks/html'),
+    replaceTask = require('./gulp/tasks/replace'),
+    releaseTask = require('./gulp/tasks/release'),
     serverTask = require('./gulp/tasks/server');
 
     gulp.task('clean', cleanTask.clean);

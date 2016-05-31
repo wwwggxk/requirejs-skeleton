@@ -3,8 +3,8 @@ var gulp =require('gulp'),
     replaceHtml = "(?:href|src|data-main)=(?:(\"|'|\\s*)([^\\s]+)\\1)",
     replaceCss = "url\\((\"|'?)(.+?)(\\1)\\)",
     common = require('./common'),
-    manifestCdnPath = '../config/manifest-cdn.json',
-    manifestAssetsCdnPath = '../config/manifest-assets-cdn.json',
+    manifestCdnPath = '../.tmp/manifest-cdn.json',
+    manifestAssetsCdnPath = '../.tmp/manifest-assets-cdn.json',
     config = require('../config/gulpconfig.json');
 
 module.exports.replaceAssets = function () {

@@ -3,8 +3,8 @@ var gulp = require('gulp'),
     fs = require('fs'),
     common = require('./common'),
     utils = require('../utils'),
-    manifestPath = '../config/manifest.json',
-    manifestAssetsPath = '../config/manifest-assets.json',
+    manifestPath = '../.tmp/manifest.json',
+    manifestAssetsPath = '../.tmp/manifest-assets.json',
     config = require('../config/gulpconfig.json');
 
 module.exports.cdn = function () {

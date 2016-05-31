@@ -17,9 +17,10 @@ module.exports.other = function () {
 module.exports.html = function () {
 
     var mergedStyle = path.join(config.paths.distStyles,
-            config.paths.mainCssName);
+            config.paths.mainCssName),
+        src = common.allFile(config.paths.srcTemplates, config.ext.html);
 
-    return gulp.src(config.paths.srcIndex)
+    return gulp.src(src, {base: config.paths.base})
         .pipe(inject(gulp.src(mergedStyle), {
             relative: true,
             ignorePath: config.paths.dist

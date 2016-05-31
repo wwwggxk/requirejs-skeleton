@@ -1,5 +1,8 @@
 .DS_Store
-.sass-cache/
+.sass-cache
 node_modules
 bower_components
+dist
 test.js
+gulp/.tmp
+*.un~
