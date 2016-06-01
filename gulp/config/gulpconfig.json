@@ -1,7 +1,7 @@
 {
     "header": "/* http://wq.fyi */",
     "server": {
-        "root": "./app",
+        "root": "./src",
         "port": 9999
     },
     "release": {
@@ -53,7 +53,7 @@
         "image": "{png,jpeg,jpg,gif,svg}"
     },
     "paths": {
-        "base": "./app",
+        "base": "./src",
         "manifestFile": "./gulp/.tmp/manifest.json",
         "manifestCdnFile": "./gulp/.tmp/manifest-cdn.json",
         "manifestAssetsFile": "./gulp/.tmp/manifest-assets.json",
@@ -74,12 +74,12 @@
         "srcOtherLibs": [
         ],
         "srcTemplates": [
-            "app/index.html",
-            "app/templates"
+            "src/index.html",
+            "src/templates"
         ],
-        "srcScripts": "app/js",
-        "srcImages": "app/img",
-        "srcStyles": "app/css",
+        "srcScripts": "src/js",
+        "srcImages": "src/img",
+        "srcStyles": "src/css",
 
         "dist": "./dist",
         "distLibs": "dist/libs",

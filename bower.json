@@ -20,9 +20,7 @@
     "requirejs": "~2.2.0",
     "zepto": "~1.1.6",
     "animate.css": "https://github.com/daneden/animate.css.git#~3.5.1",
-    "normalize-css": "https://github.com/necolas/normalize.css.git#~4.1.1"
-  },
-  "devDependencies": {
+    "normalize-css": "https://github.com/necolas/normalize.css.git#~4.1.1",
     "modernizr": "https://github.com/components/modernizr.git#~2.8.3",
     "skrollr": "https://github.com/Prinzhorn/skrollr.git#~0.6.30"
   }
