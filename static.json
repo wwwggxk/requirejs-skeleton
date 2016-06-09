@@ -1,0 +1,42 @@
+{
+  "img/facebook.png": {
+    "hash": "img/facebook-ae25ea6c28.png",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/facebook-ae25ea6c28.png?e=1465508010&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:u4m19mfuZY4TtbCRoT8mQmndqmM="
+  },
+  "img/github.png": {
+    "hash": "img/github-b066bbd676.png",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/github-b066bbd676.png?e=1465508010&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:_FvFWMb7diVbbTl3aPlzIq3wxbQ="
+  },
+  "img/linkedin.png": {
+    "hash": "img/linkedin-052bb28f4c.png",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/linkedin-052bb28f4c.png?e=1465508010&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:4b_UaIH01R-S_XMyOx4UCbg_Zj0="
+  },
+  "img/pinterest.png": {
+    "hash": "img/pinterest-564ea13b69.png",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/pinterest-564ea13b69.png?e=1465508010&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:Rl6bOWcVG9JcmS6WJ3Rs5WQKPkE="
+  },
+  "img/twitter.png": {
+    "hash": "img/twitter-e61b892009.png",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/twitter-e61b892009.png?e=1465508011&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:lReDxXfktf-KeOucE5McafzoUsg="
+  },
+  "css/core.css": {
+    "hash": "css/core-42a0430a3e.css",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/core-42a0430a3e.css?e=1465507170&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:LJMkCSfYhxtLgoODiXC9C0046QM="
+  },
+  "css/style.css": {
+    "hash": "css/style-060f4035d9.css",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/style-060f4035d9.css?e=1465507386&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:vVcsfDiTIUJwTUs0f2HGRl-8k2A="
+  },
+  "js/core.js": {
+    "hash": "js/core-69b0102d70.js",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/core-69b0102d70.js?e=1465508011&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:0E8pIriNGlAGGwsquUaF4Lkiipk="
+  },
+  "js/main.js": {
+    "hash": "js/main-4ba97e20fb.js",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/main-4ba97e20fb.js?e=1465508011&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:SC6jI5Dxm3sEoh7ISgALIj6czW0="
+  },
+  "css/main.css": {
+    "hash": "css/main-88f1ea2321.css",
+    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/main-88f1ea2321.css?e=1465508011&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:ap6qCeDiPqltSMH1pFvY9b-x2Fc="
+  }
+}

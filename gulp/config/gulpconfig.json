@@ -1,5 +1,6 @@
 {
     "header": "/* http://wq.fyi */",
+    "cdnAll": true,
     "server": {
         "root": "./src",
         "port": 9999
@@ -53,15 +54,17 @@
         "image": "{png,jpeg,jpg,gif,svg}"
     },
     "paths": {
+        "root": ".",
         "base": "./src",
         "manifestFile": "./gulp/.tmp/manifest.json",
         "manifestCdnFile": "./gulp/.tmp/manifest-cdn.json",
         "manifestAssetsFile": "./gulp/.tmp/manifest-assets.json",
         "manifestAssetsCdnFile": "./gulp/.tmp/manifest-assets-cdn.json",
         "requireConfigFile": "./gulp/config/requireconfig.js",
+        "staticConfigFile": "./static.json",
 
         "coreCssName": "core.css",
-        "mainCssName": "style.css",
+        "mainCssName": "main.css",
         "coreJsModuleName": "core-module.js",
         "coreJsName": "core.js",
         "mainJsName": "main.js",

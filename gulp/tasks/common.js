@@ -42,6 +42,17 @@ module.exports.childFile = function (path, ext) {
 };
 
 /**
+ * 当前所有扩展文件
+ *
+ * @param path
+ * @param ext
+ * @return {undefined}
+ */
+module.exports.extFile = function (path, ext) {
+    return path +  (ext ? ('.' + ext) : '');
+};
+
+/**
  * 排除路径文件
  *
  * @param path

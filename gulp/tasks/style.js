@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     path = require('path'),
     concat = require('gulp-concat'),
     sass = require('gulp-sass'),
+    foreach = require('gulp-foreach'),
     cleanCss = require('gulp-clean-css'),
     cssAutoprefix = require('gulp-autoprefixer'),
     merge = require('merge-stream'),
@@ -21,39 +22,58 @@ module.exports.compileCss = function () {
 
         gulp.src(common.allFile(config.paths.srcStyles, config.ext.style))
             .pipe(sass())
-            .pipe(cssAutoprefix({
-                browsers: config.css.autoPrefixBrowsers,
-                cascade: false
-            }))
+            .pipe(foreach(css(false)))
             .pipe(NoServer.streamReloadCss())
             .pipe(gulp.dest(config.paths.srcStyles));
 
 };
 
-module.exports.css =  function () {
+function css(isCleanCss) {
 
-        var cssStream = gulp.src(common.allFile(config.paths.srcStyles,
-                config.ext.style), {base: '.'})
-            .pipe(sass())
+    return function (stream) {
+        var tmp = stream.pipe(sass())
             .pipe(cssAutoprefix({
                 browsers: config.css.autoPrefixBrowsers,
                 cascade: false
-            }))
-            .pipe(cleanCss({
+            }));
+
+        if (!isCleanCss) {
+            return tmp;
+        }
+
+        return tmp.pipe(cleanCss({
                 aggressiveMerging: false,
                 advanced: false,
                 compatibility: 'ie7',
                 keepBreaks: false
-            })),
+            }));
+    };
 
-            coreStream = gulp.src(path.join(config.paths.srcStyles,
-                config.paths.coreCssName))
-                .pipe(cleanCss({
-                    keepSpecialComments: 0
-                }));
+}
 
-        return merge(coreStream, cssStream)
-            .pipe(concat(config.paths.mainCssName))
-            .pipe(gulp.dest(config.paths.distStyles));
+module.exports.css =  function () {
+
+    var mainStylePath = common.extFile(path.join(config.paths.srcStyles,
+            path.basename(config.paths.mainCssName, '.css')),
+            config.ext.style),
+        coreStylePath = path.join(config.paths.srcStyles,
+            config.paths.coreCssName),
+
+        cssStream = gulp.src(mainStylePath, {base: '.'})
+        .pipe(foreach(css(true))),
+
+        coreStream = gulp.src(coreStylePath)
+            .pipe(cleanCss({
+                keepSpecialComments: 0
+            }));
+
+    gulp.src([common.allFile(config.paths.srcStyles),
+            '!' + mainStylePath, '!' + coreStylePath])
+        .pipe(foreach(css(true)))
+        .pipe(gulp.dest(config.paths.distStyles));
+
+    return merge(coreStream, cssStream)
+        .pipe(concat(config.paths.mainCssName))
+        .pipe(gulp.dest(config.paths.distStyles));
 
 };
