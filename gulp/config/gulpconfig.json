@@ -1,6 +1,10 @@
 {
     "header": "/* http://wq.fyi */",
-    "cdnAll": true,
+    "cdn": {
+        "optimize": false,
+        "enable": false,
+        "server": ""
+    },
     "server": {
         "root": "./src",
         "port": 9999
@@ -20,7 +24,7 @@
         }
     },
     "ga": {
-        "enabled": true,
+        "enabled": false,
         "key": "<!--ga-->",
         "placeholder": "{trackingId}",
         "trackingId": "UA-65648625-1",

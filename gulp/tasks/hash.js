@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 module.exports.hashAssets = function () {
 
     var src = common.allFile(config.paths.distImages, config.ext.image),
-        base = './dist';
+        base = config.paths.dist;
 
     return gulp.src(src, {base: base})
         .pipe(rev())
@@ -34,7 +34,7 @@ module.exports.hash = function () {
 
     var src = [common.allFile(config.paths.distStyles, 'css'),
                 common.allFile(config.paths.distScripts, 'js')],
-        base = './dist';
+        base = config.paths.dist;
 
     return gulp.src(src, {base: base})
         .pipe(rev())

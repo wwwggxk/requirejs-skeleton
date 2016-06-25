@@ -20,11 +20,11 @@ module.exports.coreCss = function () {
 
 module.exports.compileCss = function () {
 
-        gulp.src(common.allFile(config.paths.srcStyles, config.ext.style))
-            .pipe(sass())
-            .pipe(foreach(css(false)))
-            .pipe(NoServer.streamReloadCss())
-            .pipe(gulp.dest(config.paths.srcStyles));
+    gulp.src(common.allFile(config.paths.srcStyles, config.ext.style))
+        .pipe(sass())
+        .pipe(foreach(css(false)))
+        .pipe(NoServer.streamReloadCss())
+        .pipe(gulp.dest(config.paths.srcStyles));
 
 };
 
@@ -67,7 +67,7 @@ module.exports.css =  function () {
                 keepSpecialComments: 0
             }));
 
-    gulp.src([common.allFile(config.paths.srcStyles),
+    gulp.src([common.allFile(config.paths.srcStyles, '.css'),
             '!' + mainStylePath, '!' + coreStylePath])
         .pipe(foreach(css(true)))
         .pipe(gulp.dest(config.paths.distStyles));

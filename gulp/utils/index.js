@@ -1,7 +1,9 @@
 var Qiniu = require('./qiniu'),
-    Shell =require('./shell');
+    Shell =require('./shell'),
+    Common =require('./common');
 
 module.exports = {
     Qiniu: Qiniu,
-    Shell: Shell
+    Shell: Shell,
+    Common: Common
 };

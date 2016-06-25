@@ -41,25 +41,30 @@ module.exports.libs = function () {
 
 };
 
-module.exports.js = function () {
+module.exports.js = function (callback) {
 
     var coreModulePath = path.join(config.paths.srcScripts,
-        config.paths.coreJsModuleName),
+            config.paths.coreJsModuleName),
         corePath = path.join(config.paths.srcScripts,
-        config.paths.coreJsName);
-
-    gulp.src(corePath).pipe(gulp.dest(config.paths.distScripts));
+            config.paths.coreJsName);
 
     gulp.src([common.childFile(config.paths.srcScripts, 'js')]
-            .concat(common.excludeFile(coreModulePath)))
+            .concat(common.excludeFile(coreModulePath), corePath))
         .pipe(foreach(function (stream, file) {
-            return stream.pipe(optimize(file.relative.replace(/\.js/, ''), {
-                        baseUrl: config.paths.srcScripts
-                    }))
-                    .pipe(concat(path.basename(file.relative)))
-                    .pipe(uglify())
-                    .pipe(header(config.header))
-                    .pipe(gulp.dest(config.paths.distScripts));
+
+            return path.basename(file.relative) === config.paths.coreJsName ?
+                stream.pipe(gulp.dest(config.paths.distScripts)) :
+                stream.pipe(optimize(file.relative.replace(/\.js/, ''), {
+                    baseUrl: config.paths.srcScripts
+                }))
+                .pipe(concat(path.basename(file.relative)))
+                .pipe(uglify())
+                .pipe(header(config.header))
+                .pipe(gulp.dest(config.paths.distScripts));
+        }))
+        .pipe(common.throughEach(null, function (cb) {
+            cb();
+            callback();
         }));
 
 };
