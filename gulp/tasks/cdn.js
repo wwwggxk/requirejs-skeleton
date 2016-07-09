@@ -11,6 +11,7 @@ var gulp = require('gulp'),
 module.exports.cdn = function (cb) {
 
     if (!config.cdn.enable) {
+        console.log('disabled: cdn');
         return cb();
     }
 
@@ -121,6 +122,7 @@ function cdnFunc(callback) {
 module.exports.cdnAssets = function (cb) {
 
     if (!config.cdn.enable) {
+        console.log('disabled: cdn assets');
         return cb();
     }
 

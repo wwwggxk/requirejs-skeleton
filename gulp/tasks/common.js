@@ -13,12 +13,12 @@ module.exports.allFile = function (path, ext) {
     if (Array.isArray(path)) {
         path.forEach(function (item, index) {
             if (!fileReg.test(item)) {
-                path[index] =  path[index] + '/**/*' + (ext ? ('.' + ext) : '');
+                path[index] =  path[index] + '/**/*' + (ext ? ('.' + ext) : '.*');
             }
         });
         return path;
     }
-    return path + '/**/*' + (ext ? ('.' + ext) : '');
+    return path + '/**/*' + (ext ? ('.' + ext) : '.*');
 };
 
 /**

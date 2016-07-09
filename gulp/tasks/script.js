@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     path = require('path'),
     concat = require('gulp-concat'),
     optimize = require('amd-optimize'),
+    ngAnnotate = require('gulp-ng-annotate'),
     uglify = require('gulp-uglify'),
     foreach = require('gulp-foreach'),
     header = require('gulp-header'),
@@ -58,6 +59,7 @@ module.exports.js = function (callback) {
                     baseUrl: config.paths.srcScripts
                 }))
                 .pipe(concat(path.basename(file.relative)))
+                .pipe(ngAnnotate())
                 .pipe(uglify())
                 .pipe(header(config.header))
                 .pipe(gulp.dest(config.paths.distScripts));

@@ -14,6 +14,7 @@ var gulp =require('gulp'),
     config = require('../config/gulpconfig.json');
 
 function replaceFunc(callback, src, manifest, isRewrite) {
+console.log(src);
 
     return gulp.src(src)
         .pipe(foreach(function (stream) {
@@ -62,7 +63,8 @@ module.exports.replaceAssets = function (callback) {
 
     var src = [common.allFile(config.paths.dist, 'html'),
                 common.allFile(config.paths.dist, 'js'),
-                common.allFile(config.paths.dist, 'css')];
+                common.allFile(config.paths.dist, 'css'),
+                '!' + common.allFile(config.paths.distLibs)];
 
     utils.Common.isExists(manifestAssetsCdnPath).then(function () {
         return replaceFunc(callback, src, require(manifestAssetsCdnPath));
@@ -80,7 +82,8 @@ module.exports.replaceAssets = function (callback) {
 module.exports.replace = function (callback) {
 
     var src = [common.allFile(config.paths.dist, 'html'),
-        common.allFile(config.paths.dist, 'css')];
+        common.allFile(config.paths.dist, 'css'),
+        '!' + common.allFile(config.paths.distLibs)];
 
     utils.Common.isExists(manifestCdnPath).then(function () {
         return replaceFunc(callback, src, require(manifestCdnPath));
