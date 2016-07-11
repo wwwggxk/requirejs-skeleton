@@ -5,4 +5,5 @@ bower_components
 dist
 test.js
 gulp/.tmp
+static.json
 *.un~

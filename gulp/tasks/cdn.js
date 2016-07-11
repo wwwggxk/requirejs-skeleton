@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 
 module.exports.cdn = function (cb) {
 
-    if (!config.cdn.enable) {
+    if (!config.task.cdn.enable) {
         console.log('disabled: cdn');
         return cb();
     }
@@ -48,7 +48,7 @@ function cdnFunc(callback) {
                         itemKey;
 
                     // 已经传过的不再上传cdn
-                    if (config.cdn.optimize) {
+                    if (config.task.cdn.optimize) {
                         for (itemKey in staticConfig) {
                             if (staticConfig[itemKey].hash === file.relative) {
                                 console.log('✔︎ skip: ' + filePath);
@@ -121,7 +121,7 @@ function cdnFunc(callback) {
 
 module.exports.cdnAssets = function (cb) {
 
-    if (!config.cdn.enable) {
+    if (!config.task.cdn.enable) {
         console.log('disabled: cdn assets');
         return cb();
     }
@@ -157,7 +157,7 @@ function cdnAssetsFunc(callback) {
                         itemKey;
 
                     // 已经传过的不再上传cdn
-                    if (config.cdn.optimize) {
+                    if (config.task.cdn.optimize) {
                         for (itemKey in staticConfig) {
                             if (staticConfig[itemKey].hash === file.relative) {
                                 console.log('✔︎ skip: ' + filePath);

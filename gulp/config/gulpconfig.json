@@ -1,9 +1,19 @@
 {
     "header": "/* http://wq.fyi */",
-    "cdn": {
-        "optimize": false,
-        "enable": true,
-        "server": ""
+    "task": {
+        "hash": true,
+        "minihtml": true,
+        "cdn": {
+            "optimize": false,
+            "enable": false
+        },
+        "rewrite": {
+            "server": "http://www.baidu.com"
+        },
+        "uglify": {
+            "coreJs": true,
+            "js": true
+        }
     },
     "server": {
         "root": "./src",
@@ -60,6 +70,7 @@
     "paths": {
         "root": ".",
         "base": "./src",
+        "staticFile": "./gulp/.tmp/static.json",
         "manifestFile": "./gulp/.tmp/manifest.json",
         "manifestCdnFile": "./gulp/.tmp/manifest-cdn.json",
         "manifestAssetsFile": "./gulp/.tmp/manifest-assets.json",

@@ -29,10 +29,10 @@ module.exports.html = function () {
             replace(config.ga.key,
                 config.ga.script.replace(config.ga.placeholder,
                     config.ga.trackingId))))
-        .pipe(htmlmin({
+        .pipe(gulpif(config.task.minihtml, htmlmin({
             collapseWhitespace: true,
             removeComments: true
-        }))
+        })))
         .pipe(gulp.dest(config.paths.dist));
 
 };

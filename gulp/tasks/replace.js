@@ -7,6 +7,7 @@ var gulp =require('gulp'),
     replaceCss = "url\\((\"|'?)(.+?)(\\1)\\)",
     common = require('./common'),
     utils = require('../utils'),
+    staticPath = path.join(__dirname, '../.tmp/static.json'),
     manifestPath = path.join(__dirname, '../.tmp/manifest.json'),
     manifestCdnPath = path.join(__dirname, '../.tmp/manifest-cdn.json'),
     manifestAssetsPath = path.join(__dirname, '../.tmp/manifest-assets.json'),
@@ -14,7 +15,6 @@ var gulp =require('gulp'),
     config = require('../config/gulpconfig.json');
 
 function replaceFunc(callback, src, manifest, isRewrite) {
-console.log(src);
 
     return gulp.src(src)
         .pipe(foreach(function (stream) {
@@ -24,10 +24,12 @@ console.log(src);
 
                     for(key in manifest) {
                         if (match.indexOf(key) > -1) {
-                            return match.replace(url,
-                                isRewrite ?
-                                path.join(config.cdn.server, manifest[key]) :
-                                manifest[key]);
+                            var target = isRewrite ?
+                                utils.Common.joinPath(config.task.rewrite.server, manifest[key]) :
+                                manifest[key];
+
+                            console.log('replace ' + key + ' to ' + target);
+                            return match.replace(url, target);
                         }
                     }
                     return match;
@@ -38,13 +40,15 @@ console.log(src);
 
                     for(key in manifest) {
                         if (match.indexOf(key) > -1) {
-                            // replace cdn address
-                            if (!isRewrite) {
-                                return match.replace(url, manifest[key]);
-                            }
-                            // replace file to local or rewrited server
-                            return match.replace(config.cdn.server ? url : key,
-                                path.join(config.cdn.server, manifest[key]));
+                            var src = !isRewrite ?
+                                    url :
+                                    (config.task.rewrite.server ?  url : key),
+                                target = !isRewrite ?
+                                    manifest[key] :
+                                    utils.Common.joinPath(config.task.rewrite.server, manifest[key]) ;
+
+                            console.log('replace ' + key + ' to ' + target);
+                            return match.replace(src, target);
                         }
                     }
                     return match;
@@ -91,8 +95,12 @@ module.exports.replace = function (callback) {
         utils.Common.isExists(manifestPath).then(function () {
             return replaceFunc(callback, src, require(manifestPath), true);
         }, function () {
-            console.log('skip: replace');
-            callback();
+            utils.Common.isExists(staticPath).then(function () {
+                return replaceFunc(callback, src, require(staticPath), true);
+            }, function () {
+                console.log('skip: replace');
+                callback();
+            });
         });
     });
 

@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     optimize = require('amd-optimize'),
     ngAnnotate = require('gulp-ng-annotate'),
     uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
     foreach = require('gulp-foreach'),
     header = require('gulp-header'),
     common = require('./common'),
@@ -20,7 +21,7 @@ module.exports.coreJs = function () {
             configFile: config.paths.requireConfigFile
         }))
         .pipe(concat('core.js'))
-        .pipe(uglify())
+        .pipe(gulpif(config.task.uglify.coreJs, uglify()))
         .pipe(header(config.header))
         .pipe(gulp.dest(config.paths.srcScripts));
 
@@ -60,7 +61,7 @@ module.exports.js = function (callback) {
                 }))
                 .pipe(concat(path.basename(file.relative)))
                 .pipe(ngAnnotate())
-                .pipe(uglify())
+                .pipe(gulpif(config.task.uglify.js, uglify()))
                 .pipe(header(config.header))
                 .pipe(gulp.dest(config.paths.distScripts));
         }))

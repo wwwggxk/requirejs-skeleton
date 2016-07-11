@@ -24,5 +24,19 @@ module.exports = {
                 }
             });
         });
+    },
+    joinPath: function (pre, affix) {
+        pre = pre.charAt(pre.length - 1) === '/' ?  pre : (pre + '/');
+        affix = affix.charAt(0) === '/' ?  affix.slice(1) : affix;
+
+        return pre + affix;
+    },
+    readInput: function (tip) {
+        return q.promise(function (resolve, reject) {
+            console.log(tip);
+            stdin.addListener("data", function(d) {
+                resolve(d.toString().trim());
+            });
+        });
     }
 };
