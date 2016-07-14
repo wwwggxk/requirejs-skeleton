@@ -27,11 +27,14 @@
 
 - 开发时文件改变浏览器实时刷新
 
+## 初始化
+> bower install && npm install
+
 ## gulp 主要任务
 
-- gulp init    // 初始化打包三方库及css预编译
+> gulp init    // 初始化打包三方库及css预编译
 
-- gulp         // 开发，启动文件监听及本地静态服务器
+> gulp         // 开发，启动文件监听及本地静态服务器
 
 ## 规范
 
