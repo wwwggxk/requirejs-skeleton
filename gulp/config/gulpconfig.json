@@ -8,7 +8,7 @@
             "enable": true
         },
         "rewrite": {
-            "server": "http://www.baidu.com"
+            "server": "http://www.example.com"
         },
         "uglify": {
             "coreJs": true,
