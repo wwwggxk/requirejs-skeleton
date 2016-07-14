@@ -15,12 +15,9 @@
 })(window, function() {
     'use strict';
 
-    var root = this,
-        doc = window.document,
+    var doc = window.document,
         styles = doc.createElement('div').style,
-        toString = Object.prototype.toString,
-        slice = Array.prototype.slice.call,
-        class2type = {};
+        toString = Object.prototype.toString;
 
     // 简单定义构造函数
     var Utils = function(obj) {

@@ -3,10 +3,10 @@ var gulp = require('gulp'),
     fs = require('fs'),
     common = require('./common'),
     utils = require('../utils'),
-    staticConfigFilePath = path.join(__dirname, '../../static.json'),
+    config = require('../config/gulpconfig.json'),
     manifestPath = path.join(__dirname, '../.tmp/manifest.json'),
     manifestAssetsPath = path.join(__dirname, '../.tmp/manifest-assets.json'),
-    config = require('../config/gulpconfig.json');
+    staticConfigFilePath = path.join(__dirname, '../../', config.paths.staticConfigFile);
 
 module.exports.cdn = function (cb) {
 
@@ -19,6 +19,7 @@ module.exports.cdn = function (cb) {
         utils.Common.createFile(staticConfigFilePath, '{}').then(cdnFunc(cb),
         function () {
             console.log('create file failed: ', staticConfigFilePath);
+            cb();
         });
     });
 

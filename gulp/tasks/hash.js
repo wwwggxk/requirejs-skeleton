@@ -4,17 +4,17 @@ var gulp = require('gulp'),
     path = require('path'),
     common = require('./common'),
     utils = require('../utils'),
-    staticPath = path.join(__dirname, '../.tmp/static.json'),
-    config = require('../config/gulpconfig.json');
+    config = require('../config/gulpconfig.json'),
+    manifestPath = path.join(__dirname, '../../', config.paths.manifestFile),
+    manifestAssetsPath = path.join(__dirname, '../../', config.paths.manifestAssetsFile);
 
-function recordStatic(src, base, staticFile, callback) {
+function recordStatic(src, base, staticFile, configPath, callback) {
     gulp.src(src, {base: base})
     .pipe(common.throughEach(function (file, cb) {
         staticFile[file.relative] = file.relative;
         cb();
     }, function (cb) {
-        fs.writeFileSync(config.paths.staticFile,
-            JSON.stringify(staticFile, null, '  '));
+        fs.writeFileSync(configPath, JSON.stringify(staticFile, null, '  '));
         cb();
         callback();
     }));
@@ -27,7 +27,17 @@ module.exports.hashAssets = function (callback) {
         base = config.paths.dist, staticFile = {};
 
     if (!config.task.hash) {
-        recordStatic(src, base, staticFile, callback);
+        utils.Common.isExists(manifestAssetsPath).then(function () {
+            staticFile = require(manifestAssetsPath);
+            recordStatic(src, base, staticFile, manifestAssetsPath, callback);
+        }, function () {
+            utils.Common.createFile(manifestAssetsPath, '{}').then(function () {
+                recordStatic(src, base, staticFile, manifestAssetsPath, callback);
+            }, function () {
+                console.log('create file failed: ', manifestAssetsPath);
+                callback();
+            });
+        })
         return console.log('disabled: hash assets');
     }
 
@@ -64,14 +74,15 @@ module.exports.hash = function (callback) {
         base = config.paths.dist, staticFile = {};
 
     if (!config.task.hash) {
-        utils.Common.isExists(staticPath).then(function () {
-            staticFile = require(staticPath);
-            recordStatic(src, base, staticFile, callback);
+        utils.Common.isExists(manifestPath).then(function () {
+            staticFile = require(manifestPath);
+            recordStatic(src, base, staticFile, manifestPath, callback);
         }, function () {
-            utils.Common.createFile(staticPath, '{}').then(function () {
-                recordStatic(src, base, staticFile, callback);
+            utils.Common.createFile(manifestPath, '{}').then(function () {
+                recordStatic(src, base, staticFile, manifestPath, callback);
             }, function () {
                 console.log('create file failed: ', staticConfigFilePath);
+                callback();
             });
         })
         return console.log('disabled: hash');

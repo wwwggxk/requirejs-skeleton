@@ -7,14 +7,40 @@ var gulp =require('gulp'),
     replaceCss = "url\\((\"|'?)(.+?)(\\1)\\)",
     common = require('./common'),
     utils = require('../utils'),
-    staticPath = path.join(__dirname, '../.tmp/static.json'),
+    config = require('../config/gulpconfig.json'),
     manifestPath = path.join(__dirname, '../.tmp/manifest.json'),
     manifestCdnPath = path.join(__dirname, '../.tmp/manifest-cdn.json'),
     manifestAssetsPath = path.join(__dirname, '../.tmp/manifest-assets.json'),
     manifestAssetsCdnPath = path.join(__dirname, '../.tmp/manifest-assets-cdn.json'),
-    config = require('../config/gulpconfig.json');
+    staticConfigFilePath = path.join(__dirname, '../../', config.paths.staticConfigFile);
 
 function replaceFunc(callback, src, manifest, isRewrite) {
+
+    utils.Common.isExists(staticConfigFilePath).then(function () {
+        var staticConfig = require(staticConfigFilePath), key;
+        for(key in manifest) {
+            staticConfig[key] = manifest[key];
+        }
+        fs.writeFileSync(staticConfigFilePath,
+            JSON.stringify(staticConfig, null, '  '));
+        doReplace(callback, src, manifest, isRewrite);
+    }, function () {
+        utils.Common.createFile(staticConfigFilePath, '{}').then(function () {
+            var staticConfig = require(staticConfigFilePath), key;
+            for(key in manifest) {
+                staticConfig[key] = manifest[key];
+            }
+            fs.writeFileSync(staticConfigFilePath,
+                JSON.stringify(staticConfig, null, '  '));
+            doReplace(callback, src, manifest, isRewrite);
+        }, function () {
+            console.log('create file failed: ', staticConfigFilePath);
+            callback();
+        });
+    });
+        }
+
+function doReplace(callback, src, manifest, isRewrite) {
 
     return gulp.src(src)
         .pipe(foreach(function (stream) {
@@ -95,12 +121,8 @@ module.exports.replace = function (callback) {
         utils.Common.isExists(manifestPath).then(function () {
             return replaceFunc(callback, src, require(manifestPath), true);
         }, function () {
-            utils.Common.isExists(staticPath).then(function () {
-                return replaceFunc(callback, src, require(staticPath), true);
-            }, function () {
-                console.log('skip: replace');
-                callback();
-            });
+            console.log('skip: replace');
+            callback();
         });
     });
 

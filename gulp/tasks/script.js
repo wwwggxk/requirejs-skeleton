@@ -20,7 +20,7 @@ module.exports.coreJs = function () {
         .pipe(optimize(path.basename(config.paths.coreJsModuleName, '.js'), {
             configFile: config.paths.requireConfigFile
         }))
-        .pipe(concat('core.js'))
+        .pipe(concat(config.paths.coreJsName))
         .pipe(gulpif(config.task.uglify.coreJs, uglify()))
         .pipe(header(config.header))
         .pipe(gulp.dest(config.paths.srcScripts));
