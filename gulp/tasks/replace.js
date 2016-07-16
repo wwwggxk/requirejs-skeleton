@@ -51,7 +51,9 @@ function doReplace(callback, src, manifest, isRewrite) {
                     for(key in manifest) {
                         if (match.indexOf(key) > -1) {
                             var target = isRewrite ?
-                                utils.Common.joinPath(config.task.rewrite.server, manifest[key]) :
+                                (config.task.rewrite.server ?
+                                    utils.Common.joinPath(config.task.rewrite.server, manifest[key]) :
+                                    manifest[key]) :
                                 manifest[key];
 
                             console.log('replace ' + key + ' to ' + target);

@@ -1,14 +1,14 @@
 {
     "header": "/* http://wq.fyi */",
     "task": {
-        "hash": false,
+        "hash": true,
         "minihtml": false,
         "cdn": {
             "optimize": false,
             "enable": false
         },
         "rewrite": {
-            "server": "http://www.example.com"
+            "server": ""
         },
         "uglify": {
             "coreJs": true,
@@ -37,20 +37,20 @@
     },
     "release": {
         "server": {
-            "host": "172.25.55.236",
+            "host": "host",
             "port": 22,
-            "username": "pi",
-            "password": "****"
+            "username": "username",
+            "password": "password"
         },
         "serverWithKey": {
-            "host": "172.25.55.236",
+            "host": "host",
             "port": 22,
-            "username": "pi",
-            "privateKey": "/Users/Qiang/.ssh/id_rsa"
+            "username": "username",
+            "privateKey": "privateKeyPath"
         }
     },
     "ga": {
-        "enabled": false,
+        "enable": false,
         "key": "<!--ga-->",
         "placeholder": "{trackingId}",
         "trackingId": "UA-65648625-1",

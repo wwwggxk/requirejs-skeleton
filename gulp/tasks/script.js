@@ -8,13 +8,15 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     foreach = require('gulp-foreach'),
     header = require('gulp-header'),
+    footer = require('gulp-footer'),
     common = require('./common'),
     config = require('../config/gulpconfig.json');
 
 module.exports.coreJs = function () {
 
     var corePath = path.join(config.paths.srcScripts,
-        config.paths.coreJsModuleName);
+        config.paths.coreJsModuleName),
+        configFileContent = fs.readFileSync(config.paths.requireConfigFile);
 
     return gulp.src(corePath)
         .pipe(optimize(path.basename(config.paths.coreJsModuleName, '.js'), {
@@ -23,6 +25,7 @@ module.exports.coreJs = function () {
         .pipe(concat(config.paths.coreJsName))
         .pipe(gulpif(config.task.uglify.coreJs, uglify()))
         .pipe(header(config.header))
+        .pipe(footer(configFileContent))
         .pipe(gulp.dest(config.paths.srcScripts));
 
 };

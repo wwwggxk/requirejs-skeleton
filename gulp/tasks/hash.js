@@ -1,5 +1,8 @@
 var gulp = require('gulp'),
     rev = require('gulp-rev'),
+    order = require('gulp-order'),
+    foreach = require('gulp-foreach'),
+    header = require('gulp-header'),
     fs = require('fs'),
     path = require('path'),
     common = require('./common'),
@@ -68,10 +71,11 @@ module.exports.hashAssets = function (callback) {
 
 module.exports.hash = function (callback) {
 
+    var moduleMap = {};
 
     var src = [common.allFile(config.paths.distStyles, 'css'),
                 common.allFile(config.paths.distScripts, 'js')],
-        base = config.paths.dist, staticFile = {};
+        base = config.paths.dist, staticFile = {}, corePath;
 
     if (!config.task.hash) {
         utils.Common.isExists(manifestPath).then(function () {
@@ -88,13 +92,21 @@ module.exports.hash = function (callback) {
         return console.log('disabled: hash');
     }
 
-    gulp.src(src, {base: base})
+    corePath = path.join(config.paths.distScripts, config.paths.coreJsName);
+
+    gulp.src(src.concat('!' + corePath), {base: base})
         .pipe(rev())
         .pipe(gulp.dest(config.paths.dist))
         .pipe(common.throughEach(function (file, cb) {
             if (!file.revOrigPath) {
                 return cb();
             }
+
+            // record module map
+            moduleMap[path.basename(file.revOrigPath, '.js')] =
+                path.basename(file.relative, '.js');
+
+            // remove original file
             fs.unlink(file.revOrigPath, function (err) {
                 if (err) {
                     console.log(err);
@@ -107,8 +119,26 @@ module.exports.hash = function (callback) {
         }))
         .pipe(gulp.dest('.'))
         .pipe(common.throughEach(null, function (cb) {
-            cb();
-            callback();
+            // hash corejs last
+            gulp.src(corePath, {base: base})
+            .pipe(header(';(function(){window.MODULE_MAP=' + JSON.stringify(moduleMap) + ';})();'))
+            .pipe(rev())
+            .pipe(gulp.dest(config.paths.dist))
+            .pipe(rev.manifest(config.paths.manifestFile, {
+                    merge: true
+            }))
+            .pipe(gulp.dest('.'))
+            .pipe(common.throughEach(null, function (headerCb) {
+                // remove original corejs
+                fs.unlink(corePath, function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    headerCb();
+                    cb();
+                    callback();
+                });
+            }));
         }));
 
 };
