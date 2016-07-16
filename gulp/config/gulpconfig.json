@@ -5,7 +5,7 @@
         "minihtml": false,
         "cdn": {
             "optimize": false,
-            "enable": true
+            "enable": false
         },
         "rewrite": {
             "server": "http://www.example.com"
@@ -13,11 +13,27 @@
         "uglify": {
             "coreJs": true,
             "js": true
+        },
+        "css": {
+            "autoPrefixBrowsers": [
+                "> 1%",
+                "Firefox >= 10",
+                "ie >= 9",
+                "iOS >= 4",
+                "Chrome >= 10"
+            ]
+        },
+        "ext": {
+            "meta": "{txt,ico}",
+            "resource": "{css,js}",
+            "html": "{html,dot,jade}",
+            "style": "{less,sass,scss}",
+            "image": "{png,jpeg,jpg,gif,svg}"
         }
     },
-    "server": {
+    "debug": {
         "root": "./src",
-        "port": 9999
+        "port": 9527
     },
     "release": {
         "server": {
@@ -46,27 +62,6 @@
         "accessKey": "WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ",
         "secretKey": "kk-BHbZQHJop9bsswFKS0LDcD2OE_qr88b058Nsa"
     },
-    "key": {
-        "sshKeyPath": "/Users/Qiang/.ssh/id_rsa",
-        "sshUsername": "work",
-        "sshPassword": "1234"
-    },
-    "css": {
-        "autoPrefixBrowsers": [
-            "> 1%",
-            "Firefox >= 10",
-            "ie >= 9",
-            "iOS >= 4",
-            "Chrome >= 10"
-        ]
-    },
-    "ext": {
-        "meta": "{txt,ico}",
-        "resource": "{css,js}",
-        "html": "{html,dot,jade}",
-        "style": "{less,sass,scss}",
-        "image": "{png,jpeg,jpg,gif,svg}"
-    },
     "paths": {
         "root": ".",
         "base": "./src",
@@ -86,9 +81,6 @@
         "mainJsName": "main.js",
 
         "srcCoreCss": [
-            "./bower_components/normalize-css/normalize.css",
-            "./bower_components/animate.css/animate.min.css",
-            "./bower_components/hover/css/hover-min.css"
         ],
         "srcOtherLibs": [
         ],
@@ -96,6 +88,7 @@
             "src/index.html",
             "src/templates"
         ],
+        "srcLibs": "src/libs",
         "srcScripts": "src/js",
         "srcImages": "src/img",
         "srcStyles": "src/css",

@@ -23,7 +23,7 @@ function recordStatic(src, base, staticFile, configPath, callback) {
 
 module.exports.hashAssets = function (callback) {
 
-    var src = common.allFile(config.paths.distImages, config.ext.image),
+    var src = common.allFile(config.paths.distImages, config.task.ext.image),
         base = config.paths.dist, staticFile = {};
 
     if (!config.task.hash) {

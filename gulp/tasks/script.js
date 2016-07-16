@@ -29,6 +29,9 @@ module.exports.coreJs = function () {
 
 module.exports.libs = function () {
 
+    gulp.src(common.allFile(config.paths.srcLibs))
+        .pipe(gulp.dest(config.paths.distLibs));
+
     config.paths.srcOtherLibs.forEach(function (item) {
 
         var stat = fs.statSync(item),

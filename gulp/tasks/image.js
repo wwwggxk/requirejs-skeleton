@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 module.exports.image = function () {
 
-    return gulp.src(common.allFile(config.paths.srcImages, config.ext.image))
+    return gulp.src(common.allFile(config.paths.srcImages, config.task.ext.image))
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],

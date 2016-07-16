@@ -6,13 +6,13 @@ var gulp = require('gulp'),
 
 module.exports.watch = function () {
 
-    gulp.watch(common.allFile(config.paths.base, config.ext.html),
+    gulp.watch(common.allFile(config.paths.base, config.task.ext.html),
         NoServer.reloadAll);
     gulp.watch(common.allFile(config.paths.srcScripts, 'js'),
         NoServer.reloadAll);
-    gulp.watch(common.allFile(config.paths.srcImages, config.ext.image),
+    gulp.watch(common.allFile(config.paths.srcImages, config.task.ext.image),
         NoServer.reloadAll);
-    gulp.watch(common.allFile(config.paths.srcStyles, config.ext.style),
+    gulp.watch(common.allFile(config.paths.srcStyles, config.task.ext.style),
         styleTask.compileCss);
 
 };

@@ -7,9 +7,9 @@ var path = require('path'),
 module.exports.local = function () {
 
     NoServer
-        .create(path.join(relativePath, config.server.root), {
+        .create(path.join(relativePath, config.debug.root), {
             browse: true,
-            port: config.server.port
+            port: config.debug.port
         })
         .start().then(watchTask.watch);
 

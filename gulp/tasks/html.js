@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 module.exports.other = function () {
 
-    gulp.src(common.childFile(config.paths.base, config.ext.meta))
+    gulp.src(common.childFile(config.paths.base, config.task.ext.meta))
         .pipe(gulp.dest(config.paths.dist));
 
 };
@@ -18,7 +18,7 @@ module.exports.html = function () {
 
     var mergedStyle = path.join(config.paths.distStyles,
             config.paths.mainCssName),
-        src = common.allFile(config.paths.srcTemplates, config.ext.html);
+        src = common.allFile(config.paths.srcTemplates, config.task.ext.html);
 
     return gulp.src(src, {base: config.paths.base})
         .pipe(inject(gulp.src(mergedStyle), {

@@ -39,6 +39,7 @@
     "ssh2": "^0.5.0"
   },
   "dependencies": {
-    "gulp-ng-annotate": "^2.0.0"
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-order": "^1.1.1"
   }
 }

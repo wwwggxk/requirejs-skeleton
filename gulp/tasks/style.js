@@ -20,7 +20,7 @@ module.exports.coreCss = function () {
 
 module.exports.compileCss = function () {
 
-    gulp.src(common.allFile(config.paths.srcStyles, config.ext.style))
+    gulp.src(common.allFile(config.paths.srcStyles, config.task.ext.style))
         .pipe(sass())
         .pipe(foreach(css(false)))
         .pipe(NoServer.streamReloadCss())
@@ -33,7 +33,7 @@ function css(isCleanCss) {
     return function (stream) {
         var tmp = stream.pipe(sass())
             .pipe(cssAutoprefix({
-                browsers: config.css.autoPrefixBrowsers,
+                browsers: config.task.css.autoPrefixBrowsers,
                 cascade: false
             }));
 
@@ -55,7 +55,7 @@ module.exports.css =  function () {
 
     var mainStylePath = common.extFile(path.join(config.paths.srcStyles,
             path.basename(config.paths.mainCssName, '.css')),
-            config.ext.style),
+            config.task.ext.style),
         coreStylePath = path.join(config.paths.srcStyles,
             config.paths.coreCssName),
 

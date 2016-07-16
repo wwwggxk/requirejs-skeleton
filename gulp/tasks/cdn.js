@@ -142,7 +142,7 @@ function cdnAssetsFunc(callback) {
         utils.Common.isExists(manifestAssetsPath).then(function () {
             var client = utils.Qiniu.init(config.qiniu.accessKey,
                          config.qiniu.secretKey),
-                src = [common.allFile(config.paths.distImages, config.ext.image)],
+                src = [common.allFile(config.paths.distImages, config.task.ext.image)],
                 staticConfig = require(staticConfigFilePath),
                 manifest = require(manifestAssetsPath),
                 manifestCdn = {},

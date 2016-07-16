@@ -1,34 +1,7 @@
 {
-  "img/facebook.png": {
-    "hash": "img/facebook.png",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/facebook.png?e=1468496474&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:HjNC0ZO_Yr1efNRtRxkNbp-c1Zw="
-  },
-  "img/github.png": {
-    "hash": "img/github.png",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/github.png?e=1468496474&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:79t0bWAadgU_e1UOgpEwVPQxOgs="
-  },
-  "img/linkedin.png": {
-    "hash": "img/linkedin.png",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/linkedin.png?e=1468496474&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:JsKhCWFWE8PWVDt1DXsGt3jhTrg="
-  },
-  "img/pinterest.png": {
-    "hash": "img/pinterest.png",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/pinterest.png?e=1468496474&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:sU45leDBQpyewZ635TWJEkocVEg="
-  },
-  "img/twitter.png": {
-    "hash": "img/twitter.png",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/twitter.png?e=1468496474&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:eeYr7Bq3vqUqu5XqV4mavOToVPo="
-  },
-  "css/main.css": {
-    "hash": "css/main.css",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/main.css?e=1468496475&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:uafndEaWrUy-RnBOr2IU6-5Qib0="
-  },
-  "js/core.js": {
-    "hash": "js/core.js",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/core.js?e=1468496475&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:AvuDCAXXsh1N59kLbDyKI6Vr9jQ="
-  },
-  "js/main.js": {
-    "hash": "js/main.js",
-    "cdn": "http://7xjjev.com1.z0.glb.clouddn.com/main.js?e=1468496475&token=WCNiZmXLHEoMSR8M3zjCbg3A5JdUl4NgjsFjugTQ:nCRsUSE_RIyl05ayn_26dWLuKJg="
-  }
+  "img/facebook.png": "img/facebook.png",
+  "img/github.png": "img/github.png",
+  "img/linkedin.png": "img/linkedin.png",
+  "img/pinterest.png": "img/pinterest.png",
+  "img/twitter.png": "img/twitter.png"
 }
