@@ -65,8 +65,6 @@
     "paths": {
         "root": ".",
         "base": "./src",
-        "staticFile": "./gulp/.tmp/static.json",
-        "staticAssetsFile": "./gulp/.tmp/static-assets.json",
         "manifestFile": "./gulp/.tmp/manifest.json",
         "manifestCdnFile": "./gulp/.tmp/manifest-cdn.json",
         "manifestAssetsFile": "./gulp/.tmp/manifest-assets.json",

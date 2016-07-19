@@ -42,9 +42,9 @@ function replaceFunc(callback, src, manifest, isRewrite) {
 
 function doReplace(callback, src, manifest, isRewrite) {
 
-    return gulp.src(src)
+    gulp.src(src)
         .pipe(foreach(function (stream) {
-            return stream.pipe(replace(new RegExp(replaceHtml, 'gm'),
+             stream.pipe(replace(new RegExp(replaceHtml, 'gm'),
                     function (match, seperator, url) {
                     var key;
 
@@ -81,12 +81,12 @@ function doReplace(callback, src, manifest, isRewrite) {
                     }
                     return match;
 
+                }))
+                .pipe(gulp.dest(config.paths.dist))
+                .pipe(common.throughEach(null, function (cb) {
+                    cb();
+                    callback();
                 }));
-        }))
-        .pipe(gulp.dest(config.paths.dist))
-        .pipe(common.throughEach(null, function (cb) {
-            cb();
-            callback();
         }));
 
 }
@@ -114,7 +114,7 @@ module.exports.replaceAssets = function (callback) {
 module.exports.replace = function (callback) {
 
     var src = [common.allFile(config.paths.dist, 'html'),
-        common.allFile(config.paths.dist, 'css'),
+        common.allFile(config.paths.dist, 'js'),
         '!' + common.allFile(config.paths.distLibs)];
 
     utils.Common.isExists(manifestCdnPath).then(function () {
