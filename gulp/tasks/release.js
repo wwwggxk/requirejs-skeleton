@@ -1,3 +1,5 @@
+var utils = require('../utils');
+
 module.exports.release = function () {
 
     //var serverOptions = config.release.serverWithKey;

@@ -25,10 +25,6 @@ module.exports.html = function () {
             relative: true,
             ignorePath: config.paths.dist
         }))
-        .pipe(gulpif(config.ga.enable,
-            replace(config.ga.key,
-                config.ga.script.replace(config.ga.placeholder,
-                    config.ga.trackingId))))
         .pipe(gulpif(config.task.minihtml, htmlmin({
             collapseWhitespace: true,
             removeComments: true
