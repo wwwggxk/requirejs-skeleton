@@ -52,8 +52,8 @@ function replaceFunc(callback, src, manifest, isRewrite) {
 function doReplace(callback, src, manifest, isRewrite) {
 
     gulp.src(src)
-        .pipe(foreach(function (stream) {
-             stream.pipe(replace(new RegExp(replaceHtml, 'gm'),
+        .pipe(foreach(function (stream, file) {
+             return stream.pipe(replace(new RegExp(replaceHtml, 'gm'),
                     function (match, seperator, url) {
                     var key;
 
@@ -65,6 +65,7 @@ function doReplace(callback, src, manifest, isRewrite) {
                                     manifest[key]) :
                                 manifest[key];
 
+                            console.log(file.relative);
                             console.log('replace ' + key + ' to ' + target);
                             return match.replace(url, target);
                         }
@@ -84,6 +85,7 @@ function doReplace(callback, src, manifest, isRewrite) {
                                     manifest[key] :
                                     utils.Common.joinPath(config.task.rewrite.server, manifest[key]) ;
 
+                            console.log(file.relative);
                             console.log('replace ' + key + ' to ' + target);
                             return match.replace(src, target);
                         }
@@ -91,11 +93,11 @@ function doReplace(callback, src, manifest, isRewrite) {
                     return match;
 
                 }))
-                .pipe(gulp.dest(config.paths.dist))
-                .pipe(common.throughEach(null, function (cb) {
-                    cb();
-                    callback();
-                }));
+                .pipe(gulp.dest(config.paths.dist));
+        }))
+        .pipe(common.throughEach(null, function (cb) {
+            cb();
+            callback();
         }));
 
 }

@@ -26,11 +26,11 @@ module.exports.other = function () {
 
 };
 
-module.exports.html = function () {
+module.exports.html = function (callback) {
 
     var src = common.allFile(config.paths.srcTemplates, config.task.ext.html);
 
-    return gulp.src(src, {base: config.paths.base})
+    gulp.src(src, {base: config.paths.base})
         .pipe(foreach(function (stream, file) {
             var name = path.basename(file.relative, '.html');
             var stylePath = [path.join(config.paths.distStyles, name + '.css')];
@@ -53,6 +53,10 @@ module.exports.html = function () {
             collapseWhitespace: true,
             removeComments: true
         })))
-        .pipe(gulp.dest(config.paths.dist));
+        .pipe(gulp.dest(config.paths.dist))
+        .pipe(common.throughEach(null, function (cb) {
+            cb();
+            callback();
+        }));
 
 };
