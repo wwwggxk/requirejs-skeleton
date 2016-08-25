@@ -1,3 +1,11 @@
+/**
+ * - watch files changing and hot reload resources
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var gulp = require('gulp'),
     NoServer = require('no-server'),
     common = require('./common'),

@@ -1,3 +1,11 @@
+/**
+ * - qiniu cdn utilities
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var qiniu = require('qiniu'),
     q = require('q');
 

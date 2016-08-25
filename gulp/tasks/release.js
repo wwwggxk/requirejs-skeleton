@@ -1,3 +1,11 @@
+/**
+ * - release files using shell command
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var utils = require('../utils');
 
 module.exports.release = function () {

@@ -1,3 +1,11 @@
+/**
+ * - host local static server
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var path = require('path'),
     NoServer = require('no-server'),
     config = require('../config/gulpconfig.json'),

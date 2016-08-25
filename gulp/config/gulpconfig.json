@@ -15,6 +15,7 @@
             "js": true
         },
         "css": {
+            "merge": false,
             "autoPrefixBrowsers": [
                 "> 1%",
                 "Firefox >= 10",
@@ -66,17 +67,18 @@
         "staticConfigFile": "./static.json",
 
         "coreCssName": "core.css",
-        "mainCssName": "main.css",
         "coreJsModuleName": "core-module.js",
         "coreJsName": "core.js",
         "mainJsName": "main.js",
 
         "srcCoreCss": [
+            "bower_components/animate.css/animate.css"
         ],
         "srcOtherLibs": [
         ],
         "srcTemplates": [
             "src/index.html",
+            "src/user.html",
             "src/templates"
         ],
         "srcLibs": "src/libs",

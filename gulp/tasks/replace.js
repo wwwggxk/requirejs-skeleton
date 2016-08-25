@@ -1,3 +1,12 @@
+/**
+ * - replace processed assets path in js, html, css files
+ * - replace processed static files path in html, js files
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var gulp =require('gulp'),
     fs = require('fs'),
     path = require('path'),

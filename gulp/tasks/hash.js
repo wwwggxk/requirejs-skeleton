@@ -1,3 +1,12 @@
+/**
+ * - hash assets used in html, css, js
+ * - hash js or others static resources
+ *
+ * @author wungqiang, wungqiang@gmail.com
+ * @motto 每个工程师都有保持代码优雅的义务
+ * @date 2016
+ */
+
 var gulp = require('gulp'),
     rev = require('gulp-rev'),
     order = require('gulp-order'),
